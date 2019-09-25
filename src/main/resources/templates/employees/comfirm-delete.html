@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h3>Employee Directory</h3>
+		<hr>
+		<a th:href="@{list}" class="btn btn-primary btn-sm mb-3">Show
+				all Employee </a>
+		<p class="h4 mb4">Delete Employee</p>
+		<form action="#" th:action="@{rest/delete}" th:object="${employee}"
+			method="POST">
+			<input type="hidden" th:field="*{emp_id}">
+			<input type="text" th:field="*{emp_name}"
+				class="form-control mb-4 col-4" placeholder="Employee Name">
+			<input type="text" th:field="*{birthdate}"
+				class="form-control mb-4 col-4" placeholder="Birth Date"> <input
+				type="number" th:field="*{phone}" class="form-control mb-4 col-4"
+				placeholder="Phone Number"> <input type="email"
+				th:field="*{email}" class="form-control mb-4 col-4"
+				placeholder="Email"> <input type="text"
+				th:field="*{address}" class="form-control mb-4 col-4"
+				placeholder="Address"> <input type="text"
+				th:field="*{department_id}" class="form-control mb-4 col-4"
+				placeholder="Department ID">
+			<button type="submit" class="btn btn-danger col-2">Comfirm Delete</button>
+		</form>
+	</div>
+
+</body>
+</html>

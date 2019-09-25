@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+.funny{
+	font-style: italic;
+	color: green;
+}
+.action{
+	width: 15%;
+}
+.search {
+  overflow: hidden;
+  float: right;
+}

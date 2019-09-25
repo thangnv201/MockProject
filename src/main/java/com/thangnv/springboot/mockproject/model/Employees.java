@@ -5,7 +5,7 @@ import java.util.Date;
 public class Employees {
 	private Integer emp_id;
 	private String emp_name;
-	private Date birthdate;
+	private String birthdate;
 	private String phone;
 	private String email;
 	private String address;
@@ -27,11 +27,11 @@ public class Employees {
 		this.emp_name = emp_name;
 	}
 
-	public Date getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 

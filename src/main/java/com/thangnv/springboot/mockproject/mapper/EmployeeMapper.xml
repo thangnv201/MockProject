@@ -1,0 +1,77 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.thangnv.springboot.mockproject.mapper.EmployeeMapper">
+	<resultMap id="EmpResultMap" type="Employees">
+		<id column="emp_id" property="emp_id" />
+		<result column="emp_name" property="emp_name" />
+		<result column="birthdate" property="birthdate" />
+		<result column="phone" property="phone" />
+		<result column="email" property="email" />
+		<result column="address" property="address" />
+		<result column="department_id" property="department_id" />
+	</resultMap>
+
+	<select id="findAllEmployee" resultMap="EmpResultMap">
+		SELECT * FROM
+		mock_project.employee
+	</select>
+	<select id="findEmployeeByID" resultMap="EmpResultMap">
+		SELECT * FROM
+		mock_project.employee where employee.emp_id = #{employeeID}
+	</select>
+	<select id="findAllEmployeeExistDepartment"
+		resultMap="EmpResultMap">
+		SELECT employee.*
+		FROM employee ,department
+		WHERE
+		employee.`department_id` = department.`department_id`
+	</select>
+	<select id="findAllByDepart" resultMap="EmpResultMap">
+		SELECT employee.*
+		FROM
+		employee ,department
+		WHERE employee.`department_id` =
+		department.`department_id` and
+		department.department_name like
+		'%${departname}%'
+	</select>
+
+	<insert id="insertEmployee" parameterType="Employees">
+		INSERT INTO
+		`mock_project`.`employee`
+		(`emp_name`,
+		`birthdate`,
+		`phone`,
+		`email`,
+		`department_id`,
+		`address`)
+		VALUES
+		(#{emp_name},
+		#{birthdate},
+		#{phone},
+		#{email},
+		#{department_id},
+		#{address});
+	</insert>
+
+	<update id="updateEmployee" parameterType="Employees">
+		UPDATE
+		`mock_project`.`employee`
+		SET
+		`emp_name` = #{emp_name},
+		`birthdate`=
+		#{birthdate},
+		`phone` = #{phone},
+		`email` = #{email},
+		`department_id` =
+		#{department_id},
+		`address` = #{address}
+		WHERE `emp_id` = #{emp_id};
+	</update>
+	
+	<delete id="deleteEmployeeByID" parameterType="int">
+		DELETE from employee WHERE emp_id = #{id};
+	</delete>
+</mapper>
