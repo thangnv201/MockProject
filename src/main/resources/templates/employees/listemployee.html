@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
 <body>
-	<div class="container">
-		<h3>Employee Directory</h3>
-		<hr>
-		<div>
-			<a th:href="@{showformAdd}" class="btn btn-primary btn-sm mb-3">Add
-				Employee </a> <a th:href="@{list}" class="btn btn-primary btn-sm mb-3">Show
-				all Employee </a> <a th:href="@{listhasdepart}"
-				class="btn btn-primary btn-sm mb-3">Show Employee has department
-				exist </a>
-			<form class="search" action="/employee/seachByName">
-				<input class="form-control" name="departname" type="text"
-					placeholder="Search Employee by department name">
-			</form>
-		</div>
-		<table class="table table-bordered table-striped">
-			<thead class="thead-dark">
-				<tr>
-					<th>Employee ID</th>
-					<th>Employee Name</th>
-					<th>BirthDate</th>
-					<th>Phone</th>
-					<th>Email</th>
-					<th>Address</th>
-					<th>DepartmentID</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="tempEmployee:${employees}">
-					<th th:text="${tempEmployee.emp_id}"></th>
-					<th th:text="${tempEmployee.emp_name}"></th>
-					<th th:text="${tempEmployee.birthdate}"></th>
-					<th th:text="${tempEmployee.phone}"></th>
-					<th th:text="${tempEmployee.email}"></th>
-					<th th:text="${tempEmployee.address}"></th>
-					<th th:text="${tempEmployee.department_id}"></th>
-					<th class="action"><a
-						th:href="@{showformUpdate(employeeID=${tempEmployee.emp_id})}"
-						class="btn btn-info btn-sm"> Update </a> <a
-						th:href="@{showformDelete(employeeID=${tempEmployee.emp_id})}"
-						class="btn btn-danger btn-sm"> Delete </a></th>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<div class="container">
+    <h3>Employee Directory</h3>
+    <hr>
+    <div>
+        <a th:href="@{showformAdd}" class="btn btn-primary btn-sm mb-3">Add
+            Employee </a> <a th:href="@{list}" class="btn btn-primary btn-sm mb-3">Show
+        all Employee </a> <a th:href="@{listhasdepart}"
+                             class="btn btn-primary btn-sm mb-3">Show Employee has department
+        exist </a>
+        <form class="search" action="/employee/seachByName">
+            <input class="form-control" name="departname" type="text"
+                   placeholder="Search Employee by department name">
+        </form>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>BirthDate</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>DepartmentID</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tempEmployee:${employees}">
+            <th th:text="${tempEmployee.emp_id}"></th>
+            <th th:text="${tempEmployee.emp_name}"></th>
+            <th th:text="${tempEmployee.birthdate}"></th>
+            <th th:text="${tempEmployee.phone}"></th>
+            <th th:text="${tempEmployee.email}"></th>
+            <th th:text="${tempEmployee.address}"></th>
+            <th th:text="${tempEmployee.department_id}"></th>
+            <th class="action">
+                <a th:href="@{showformUpdate(employeeID=${tempEmployee.emp_id})}"
+                   class="btn btn-info btn-sm"> Update </a>
+                <a th:href="@{showformDelete(employeeID=${tempEmployee.emp_id})}"
+                   class="btn btn-danger btn-sm"> Delete </a></th>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

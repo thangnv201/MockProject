@@ -11,8 +11,7 @@ import com.thangnv.springboot.mockproject.model.Employees;
 
 @Controller
 public class EmployeeController {
-	@Value("${spring.application.name}")
-	String appName;
+
 	private EmployeeMapper mapper;
 
 	public EmployeeController(EmployeeMapper mapper) {
@@ -20,11 +19,15 @@ public class EmployeeController {
 		this.mapper = mapper;
 	}
 
-	@GetMapping("/")
+	@GetMapping("/login")
 	public String homePage(Model model) {
-		model.addAttribute("appName", appName);
 		return "home";
 	}
+	@GetMapping("/")
+	public String home(Model model) {
+		return "home";
+	}
+
 
 	@GetMapping("/employee/list")
 	public String listemp(Model model) {
